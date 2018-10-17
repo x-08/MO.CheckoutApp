@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CheckoutApp.Service.Interfaces;
+using CheckoutApp.Service.PriceCalculator;
 using CheckoutAppDomain.Classes;
 using CheckoutAppDomain.Classes.Enumerations;
 using CheckoutAppDomain.DataModel.Repository;
@@ -18,18 +19,40 @@ namespace CheckoutApp.Service
             this.worker = worker;
         }
 
-        public void checkoutProduct(Product product, int Quantity)
+        public void checkoutProduct(int ProductId, int Quantity)
         {
-            var checkOut = new CheckedoutProduct
+            var product = worker.Products.GetById(ProductId);
+            if (product != null)
             {
-                Product = product,
-                Quantity = Quantity,
-                Price = getFinalPrice(product, Quantity)
-            };
-            worker.CheckedoutProducts.Add(checkOut);
-            worker.Complete();
+                var checkOut = new CheckedoutProduct
+                {
+                    Product = product,
+                    Quantity = Quantity,
+                    Price = getFinalPrice(product, Quantity)
+                };
+                worker.CheckedoutProducts.Add(checkOut);
+                worker.Complete();
+            }
+            else
+            {
+                throw new ArgumentException("Product doesnt exist");
+            }
 
 
+
+        }
+
+        public void deleteCheckedOutProduct(int ProductId)
+        {
+            var product = worker.Products.GetById(ProductId);
+           if(product != null)
+            {
+                worker.CheckedoutProducts.Delete(product);
+            }
+            else
+            {
+                throw new ArgumentException("Product doesnt exist in cart");
+            }
         }
 
         public IQueryable<CheckedoutProduct> ListCheckedoutProducts()
@@ -46,16 +69,21 @@ namespace CheckoutApp.Service
         {
 
             double cost = product.Price * quantity;
+
+            Calculator cal;
             switch (product.Category)
             {
                 case  Category.A:
-                    cost = cost * 1.1;
+                    cal = new Calculator(new ACalculator());
+                    cost = cal.calculate(cost);
                     break;
                 case Category.B:
-                    cost = cost * 1.2;
+                    cal = new Calculator(new BCalculator());
+                    cost = cal.calculate(cost);
                     break;
                 case Category.C:
-                    cost = cost * 1;
+                    cal = new Calculator(new CCalculator());
+                    cost = cal.calculate(cost);
                     break;
                 default:
                     break;

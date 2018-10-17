@@ -9,9 +9,10 @@ namespace CheckoutApp.Service.Interfaces
 {
     public interface ICheckoutService
     {
-        void checkoutProduct(Product product, int Quantity);
+        void checkoutProduct(int ProductId, int Quantity);
         CheckedoutProduct SearchCheckedoutProduct(int id);
         IQueryable<CheckedoutProduct> ListCheckedoutProducts();
+        void deleteCheckedOutProduct(int ProductId);
 
     }
 }

@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="CheckoutService.cs" />
     <Compile Include="Interfaces\ICheckoutService.cs" />
+    <Compile Include="Interfaces\IInvoiceService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="InvoiceService.cs" />
+    <Compile Include="PriceCalculator\Calculator.cs" />
+    <Compile Include="PriceCalculator\IPriceCalculator.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

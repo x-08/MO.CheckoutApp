@@ -21,7 +21,8 @@ namespace CheckoutAppDomain.DataModel.Repository
 
         public IEnumerable<CheckedoutProduct> GetCheckedoutProducts()
         {
-            return CheckoutAppContext.checkedoutProducts.ToList();
+            var products = CheckoutAppContext.checkedoutProducts.ToList();
+            return products ;
         }
     }
 }
