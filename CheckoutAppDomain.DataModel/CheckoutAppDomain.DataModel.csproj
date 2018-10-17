@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201810151511426_Correcting_category_name.Designer.cs">
       <DependentUpon>201810151511426_Correcting_category_name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810170539419_updating_name.cs" />
+    <Compile Include="Migrations\201810170539419_updating_name.Designer.cs">
+      <DependentUpon>201810170539419_updating_name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CheckedoutProductsRepository.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810151511426_Correcting_category_name.resx">
       <DependentUpon>201810151511426_Correcting_category_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170539419_updating_name.resx">
+      <DependentUpon>201810170539419_updating_name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

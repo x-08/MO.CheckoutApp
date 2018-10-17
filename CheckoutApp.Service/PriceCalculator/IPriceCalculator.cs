@@ -11,5 +11,4 @@ namespace CheckoutApp.Service.PriceCalculator
         double calculate(double cost);
     }
 
-    public interface IPar
-}
+ }

@@ -14,7 +14,7 @@ namespace CheckoutAppDomain.Classes
         public double Price { get; set; }
 
         [Required]
-        public ICollection<CheckedoutProduct> MyProperty { get; set; }
+        public virtual ICollection<CheckedoutProduct> BilledProducts { get; set; }
         public DateTime Time { get; set; }
     }
 }

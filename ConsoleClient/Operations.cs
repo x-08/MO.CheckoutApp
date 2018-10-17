@@ -77,7 +77,7 @@ namespace ConsoleClient
             Console.WriteLine($"***********************************************************************");
             Console.WriteLine($"{invoice.Id}----{invoice.Price}---{invoice.Time}");
        
-                foreach (var product in invoice.MyProperty)
+                foreach (var product in invoice.BilledProducts)
                 {
                     Console.WriteLine($"{product.Product.Name}-----{product.Quantity}----{product.Price}");
                 }

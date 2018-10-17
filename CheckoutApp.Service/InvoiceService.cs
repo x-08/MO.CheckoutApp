@@ -36,12 +36,12 @@ namespace CheckoutApp.Service
 
             InvoiceDetails newInvoiceDetail = new InvoiceDetails()
             {
-                MyProperty = products,
+                BilledProducts = products,
                 Price = price,
                 Time = DateTime.Now
             };
 
-            if(newInvoiceDetail.MyProperty.Count > 0)
+            if(newInvoiceDetail.BilledProducts.Count > 0)
             {
                 worker.InvoiceDetails.Add(newInvoiceDetail);
             }
